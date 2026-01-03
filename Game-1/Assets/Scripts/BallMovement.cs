@@ -9,7 +9,10 @@ public class BallMovement : MonoBehaviour
 	// scale factor for the force applied in the x direction when hitting the paddle
 	[SerializeField] private float hitPaddleForceXScale;
 
-	Rigidbody2D ballRigidbody;
+	// set the exit target
+	[SerializeField] private GameObject exitHitbox;
+
+    Rigidbody2D ballRigidbody;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -42,5 +45,11 @@ public class BallMovement : MonoBehaviour
 			// normalize the velocity to maintain consistent speed
 			ballRigidbody.linearVelocity = ballRigidbody.linearVelocity.normalized * speed;
 		}
-	}
+
+		// check if the ball ran into the exit, if so, destroy the ball and return win condition.
+		if (collision.gameObject == exitHitbox)
+		{
+			Destroy(gameObject);
+        }
+    }
 }
