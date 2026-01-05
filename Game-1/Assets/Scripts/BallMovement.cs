@@ -9,8 +9,9 @@ public class BallMovement : MonoBehaviour
 	// scale factor for the force applied in the x direction when hitting the paddle
 	[SerializeField] private float hitPaddleForceXScale;
 
-	// set the exit target
+	// set the exit target / win or lose text
 	[SerializeField] private GameObject exitHitbox;
+	[SerializeField] private GameObject winText;
 
     Rigidbody2D ballRigidbody;
 
@@ -50,6 +51,8 @@ public class BallMovement : MonoBehaviour
 		if (collision.gameObject == exitHitbox)
 		{
 			Destroy(gameObject);
+            winText.SetActive(true);
+
         }
     }
 }
