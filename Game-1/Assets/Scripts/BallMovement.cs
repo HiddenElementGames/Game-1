@@ -12,8 +12,9 @@ public class BallMovement : MonoBehaviour
 	// set the exit target / win or lose text
 	[SerializeField] private GameObject exitHitbox;
 	[SerializeField] private GameObject winText;
+	[SerializeField] private GameObject loseMenu;
 
-    Rigidbody2D ballRigidbody;
+	Rigidbody2D ballRigidbody;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -54,5 +55,12 @@ public class BallMovement : MonoBehaviour
             winText.SetActive(true);
 
         }
+
+		// If the ball hits the lose collider, destroy the ball and show lose condition
+		if(collision.gameObject.CompareTag("Lose"))
+		{
+			loseMenu.SetActive(true);
+			Destroy(gameObject);
+		}
     }
 }
