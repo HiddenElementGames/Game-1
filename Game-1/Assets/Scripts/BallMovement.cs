@@ -13,6 +13,7 @@ public class BallMovement : MonoBehaviour
 	[SerializeField] private GameObject exitHitbox;
 	[SerializeField] private GameObject winText;
 	[SerializeField] private GameObject loseMenu;
+	[SerializeField] private GameObject creditsMenu;
 
 	Rigidbody2D ballRigidbody;
 
@@ -53,13 +54,15 @@ public class BallMovement : MonoBehaviour
 		{
 			Destroy(gameObject);
             winText.SetActive(true);
+			creditsMenu.SetActive(true);
 
-        }
+		}
 
 		// If the ball hits the lose collider, destroy the ball and show lose condition
 		if(collision.gameObject.CompareTag("Lose"))
 		{
 			loseMenu.SetActive(true);
+			creditsMenu.SetActive(true);
 			Destroy(gameObject);
 		}
     }
